@@ -5,7 +5,7 @@ module.exports.list = async (event) => {
     statusCode: 200,
     body: JSON.stringify(
       {
-        message: 'task list',
+        message: 'task list. Test with master branch',
         input: event,
       },
       null,
