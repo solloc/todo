@@ -115,8 +115,25 @@ functions:
 #      variable2: value2
 
 # you can add CloudFormation resource templates here
-#resources:
-#  Resources:
+resources:
+  Resources:
+    tasksTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: tasksTable
+        AttributeDefinitions:
+          - AttributeName: "TaskID"
+            AttributeType: "S"
+          - AttributeName: "Status"
+            AttributeType: "S"
+        KeySchema:
+          - AttributeName: "TaskID"
+            KeyType: "HASH"
+          - AttributeName: "Status"
+            KeyType: "RANGE"
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
 #    NewResource:
 #      Type: AWS::S3::Bucket
 #      Properties:
