@@ -23,6 +23,8 @@ frameworkVersion: '2'
 provider:
   name: aws
   runtime: nodejs12.x
+  environment: 
+    DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
   lambdaHashingVersion: 20201221
 
 # you can overwrite defaults here
@@ -120,7 +122,7 @@ resources:
     tasksTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: tasksTable
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}
         AttributeDefinitions:
           - AttributeName: "TaskID"
             AttributeType: "S"
