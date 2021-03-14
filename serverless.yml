@@ -20,12 +20,16 @@ org: solloc
 # Check out our docs for more details
 frameworkVersion: '2'
 
+variablesResolutionMode: "20210219"
+
 provider:
   name: aws
   runtime: nodejs12.x
   environment: 
-    DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+    DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage, 'dev'}-tasks
   lambdaHashingVersion: 20201221
+  apiGateway:
+    shouldStartNameWithService: true
 
 # you can overwrite defaults here
 #  stage: dev
