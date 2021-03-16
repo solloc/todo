@@ -7,7 +7,7 @@ const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
 module.exports.create = (event, context, callback) => {
 
-  // const timestamp = new Date().getTime();
+  const timestamp = new Date().toISOString();
 
   // return {
   //   statusCode: 200,
@@ -24,9 +24,11 @@ module.exports.create = (event, context, callback) => {
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
     Item: {
-      TaskID: uuid.v1(),
-      Status: "OPEN",
-      text: "default text"
+      taskID: uuid.v1(),
+      status: "OPEN",
+      text: "default text",
+      createdAt: timestamp,
+      modifiedAt: timestamp,
     },
   };
 
