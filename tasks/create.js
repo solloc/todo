@@ -8,6 +8,17 @@ const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
 module.exports.create = (event, context, callback) => {
 
+  const data = JSON.parse(event.body);
+  if (typeof data.text !== 'string') {
+    console.error('Validation Failed');
+    callback(null, {
+      statusCode: 400,
+      headers: { 'Content-Type': 'text/plain' },
+      body: 'Couldn\'t create the todo item.',
+    });
+    return;
+  }
+
   const timestamp = new Date().toISOString();
 
   // return {
@@ -27,7 +38,7 @@ module.exports.create = (event, context, callback) => {
     Item: {
       taskID: nanoid(8),
       status: "OPEN",
-      text: "default text",
+      text: data.text,
       createdAt: timestamp,
       modifiedAt: timestamp,
     },

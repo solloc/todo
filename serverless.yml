@@ -77,8 +77,8 @@ functions:
     handler: tasks/create.create
     events:
       - http:
-          path: /tasks/create
-          method: get
+          path: /tasks
+          method: post
   tasks-list:
     handler: tasks/list.list
     events:
