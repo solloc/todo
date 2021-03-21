@@ -1,18 +1,29 @@
 'use strict';
 
-module.exports.list = async (event) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: 'task list. Test with master branch',
-        input: event,
-      },
-      null,
-      2
-    ),
-  };
+const AWS = require('aws-sdk');
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+const dynamoDB = new AWS.DynamoDB.DocumentClient();
+const params = {
+  TableName: process.env.DYNAMODB_TABLE,
+};
+
+module.exports.list = (event, context, callback) => {
+
+  dynamoDB.scan(params, (error, result) => {
+    if (error) {
+      console.error(error);
+      callback(null, {
+        statusCode: error.statusCode || 501,
+        headers: { 'Content-Type': 'text/plain' },
+        body: 'Couldn\'t fetch the todos.',
+      });
+      return;
+    }
+
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(result.Items),
+    };
+    callback(null, response);
+  });
 };
