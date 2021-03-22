@@ -80,12 +80,14 @@ functions:
       - http:
           path: /tasks
           method: post
+          cors: true
   tasks-list:
     handler: tasks/list.list
     events:
       - http:
           path: /tasks
           method: get
+          cors: true
   hello:
     handler: hello/hello.hello
 #    The following are a few example events you can configure
