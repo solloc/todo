@@ -57,6 +57,7 @@ provider:
           Action:
             - "dynamodb:PutItem"
             - "dynamodb:Scan"
+            - "dynamodb:GetItem"
           Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
 
 # you can define service wide environment variables here
@@ -87,6 +88,13 @@ functions:
     events:
       - http:
           path: /tasks
+          method: get
+          cors: true
+  tasks-get:
+    handler: tasks/get.get
+    events:
+      - http:
+          path: /tasks/{id}
           method: get
           cors: true
 #      - websocket: $connect
