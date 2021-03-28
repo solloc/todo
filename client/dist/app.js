@@ -8,7 +8,7 @@ var delay = 0;
 
 // for test purposes
 // get_tasks_endpoint = "../resources/tasks.json";
-// delay = 3000;
+// delay = 0000;
 
 async function refreshTaskList() {
     console.log("tasks are refreshed");
@@ -26,7 +26,7 @@ async function refreshTaskList() {
             // const tasks = await data.json();
             const tasks = data;
     
-            var taskListContainer = $("div").addClass("space-y-4");
+            var taskListContainer = $("<div>").addClass("space-y-1").attr("id", "TaskListContainer");
             taskListContainer.appendTo("#content");
     
             var taskList = "";
@@ -37,12 +37,13 @@ async function refreshTaskList() {
                 taskList += `
                     <div class="bg-white rounded-xl shadow border p-2">
                         <div class="flex">
-                            <div class="m-1 bg-gray-200 hover:bg-gray-300 rounded-full px-2 font-bold text-sm leading-loose cursor-pointer">/` + task["taskID"] + `</div>
+                            <a href="` + task["taskID"] + `" class="m-1 bg-gray-200 hover:bg-gray-300 rounded-full px-2 font-bold text-sm leading-loose cursor-pointer">/` + task["taskID"] + `</a>
                         </div>
                         <div class="px-2">` + task["text"] + `</div>
                     </div>`;
             }    
             taskListContainer.html(taskList);              
+            taskListContainer.on("click", "a", displayTaskDetails);
         }, delay);
     });
 }
@@ -59,4 +60,28 @@ var addSpinner = function() {
         //     $( this ).hide();
         // });    
     $("#content").append(spinnercontainer);
+}
+
+var displayTaskDetails = function(event) {
+    event.preventDefault();
+    // console.log("displaying task details: " + JSON.stringify(event));
+    var taskItem = $(this);
+    // console.log("task item: " + JSON.stringify(taskItem));
+    console.log("taskItem.attr: " + taskItem.attr("href"));
+    console.log("taskItem.text: " + taskItem.text());
+
+    $.ajax({
+        url: get_tasks_endpoint + "/" + taskItem.attr("href"),
+        dataType: "json",
+    }).done(function(data){
+        console.log(JSON.stringify(data));
+        var taskItemDetails = `
+            <div>
+                <div>TaskID: ` + data.taskID + `</div>
+                <div>Text: ` + data.text + ` </div>
+                <div>Status: ` + data.status + `</div>
+            </div>
+        `;
+        $("#content").append("<div>").html(taskItemDetails);
+    });    
 }
