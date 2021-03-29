@@ -6,12 +6,60 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        
+        <link rel="stylesheet" href="https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile.structure-1.5.0-rc1.min.css" />
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/f9d1e00815.js" crossorigin="anonymous"></script>
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <!-- <script src="https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.js"></script>         -->
+        <script src="https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.js"></script>        
     </head>
     <body class="bg-gray-200">
-        <div id="content" class="max-w-xl mx-auto justify-center py-1"></div>
+        <div data-role="page" id="main">
+            <!-- <div data-role="header"> -->
+                <!-- <h1>Foo</h1> -->
+            <!-- </div> -->
+            <!-- /header -->
+        
+            <div role="main" class="ui-content">
+                <div id="content" class="max-w-xl mx-auto justify-center py-1"></div>
+            </div>
+            <!-- /content -->
+        
+            <!-- <div data-role="footer"> -->
+                <!-- <h4>Page Footer</h4> -->
+            <!-- </div> -->
+            <!-- /footer -->
+        </div><!-- /page -->
+        
+        <!-- Start of second page -->
+        <div data-role="page" id="detail">
+        
+            <!-- <div data-role="header">
+                <h1>Bar</h1>
+            </div> -->
+            <!-- /header -->
+        
+            <div role="main" class="ui-content">
+                <div id="detailContent" class="max-w-xl mx-auto justify-center py-1">
+
+                    <!-- <div class="bg-white rounded-xl shadow border p-2">
+                        <div id="detailTaskID">TaskID: ` + data.taskID + `</div>
+                        <div>Text: ` + data.text + ` </div>
+                        <div>Status: ` + data.status + `</div>
+                    </div> -->
+
+                </div>
+                <!-- <p>I'm the second in the source order so I'm hidden when the page loads. I'm just shown if a link that references my id is beeing clicked.</p> -->
+                <p><a href="#main">Back to main</a></p>
+            </div><!-- /content -->
+        
+            <!-- <div data-role="footer">
+                <h4>Page Footer</h4>
+            </div> -->
+            <!-- /footer -->
+        </div><!-- /page -->
+
         <script src="app.js"></script>
     </body>
 </html>
