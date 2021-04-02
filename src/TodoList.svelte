@@ -1,4 +1,5 @@
 <script>
+    import { onMount } from 'svelte';
 
     async function getTodos() {
         const res = await fetch('https://xhjn5xxmn5.execute-api.eu-central-1.amazonaws.com/dev/tasks');
@@ -13,18 +14,23 @@
 
     // let promise = getTodos();
     let promise = Promise.resolve([]);
+    // let promise = getTodos();
 
-    function handleClick() {
-        // promise = getTodos();
+    onMount(async () => {
         promise = getTodos();
-    }
+    });
+
+    // function handleClick() {
+    //     // promise = getTodos();
+    //     promise = getTodos();
+    // }
 </script>
 
 <h1>todo</h1>
 
-<button on:click={handleClick}>
+<!-- <button on:click={handleClick}>
     fetch todos
-</button>
+</button> -->
 
 {#await promise}
 <p>waiting ...</p>
@@ -40,7 +46,7 @@
             </div>
         </div>
     {/each}
-    done
+    <!-- done -->
 </div>
 {/await}
 
