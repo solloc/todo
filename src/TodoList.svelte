@@ -1,5 +1,9 @@
 <script>
     import { onMount } from 'svelte';
+    import Icon from 'svelte-awesome';
+    import { externalLink } from 'svelte-awesome/icons';
+
+    // import external-link-alt
 
     async function getTodos() {
         const res = await fetch('https://xhjn5xxmn5.execute-api.eu-central-1.amazonaws.com/dev/tasks');
@@ -38,12 +42,21 @@
 <div>
     {#each tasks as task}
         <div class="shadow-md border p-1 m-1">
-            <div class="p-1">
+            <!-- <div class="p-1">
                 <a href="#action=detail&taskid={task.taskID}" class="font-bold">{task.taskID}</a>
-            </div>        
-            <div class="p-1">
+            </div>         -->
+            
+            <div class="float-right">
+                <a href="?action=detail&taskid={task.taskID}">
+                    <Icon data={externalLink} />
+                </a>
+            </div>
+            <div class="">
                 {task.text}
             </div>
+
+            <!-- <div class="object-right-top"> -->
+            
         </div>
     {/each}
     <!-- done -->
