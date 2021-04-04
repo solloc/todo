@@ -26,7 +26,7 @@
     // }
 </script>
 
-<h1 class="text-2xl text-center">todo</h1>
+
 
 <!-- <button on:click={handleClick}>
     fetch todos
@@ -37,8 +37,8 @@
 {:then tasks}
 <div>
     {#each tasks as task}
-        <div class="shadow border-2 border-gray-200 rounded-lg p-1 m-1 bg-white">
-            <div class="bg-gray-200 rounded p-1">
+        <div class="shadow-md border p-1 m-1">
+            <div class="p-1">
                 <a href="#action=detail&taskid={task.taskID}" class="font-bold">{task.taskID}</a>
             </div>        
             <div class="p-1">

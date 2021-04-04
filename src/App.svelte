@@ -3,12 +3,15 @@
 	import Tailwind from "./Tailwind.svelte";
 	// export let name;
 </script>
-
-<div class="bg-gray-200 flex justify-center">
-	<div class="container">
+<div class="">
+	<div class="bg-gray-500 w-full fixed top-0 shadow-md p-2">
+		<h1 class="text-center text-white"><a href="/" class="bg-gray-700 rounded-lg font-bold p-1">todo</a></h1>
+	</div>
+	<div class="max-w-2xl mx-auto overflow-y-auto mt-10">
 		<TodoList/>
 	</div>	
 </div>
+
 
 
 <!-- <main class="bg-gray-200"> -->
