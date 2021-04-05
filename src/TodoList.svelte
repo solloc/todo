@@ -3,6 +3,10 @@
     import Icon from 'svelte-awesome';
     import { externalLink } from 'svelte-awesome/icons';
 
+    // TODO: temporary. Params not in use for this component
+    export let params;
+    console.log(`params: ${params}`);
+
     // import external-link-alt
 
     async function getTodos() {
@@ -47,7 +51,7 @@
             </div>         -->
             
             <div class="float-right">
-                <a href="?action=detail&taskid={task.taskID}">
+                <a href="/task/{task.taskID}">
                     <Icon data={externalLink} />
                 </a>
             </div>
