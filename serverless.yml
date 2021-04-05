@@ -173,3 +173,4 @@ plugins:
 custom:
   client:
     bucketName: todo-client-n34gc9t82xg2
+    distributionFolder: public
