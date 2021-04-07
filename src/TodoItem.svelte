@@ -37,12 +37,10 @@
             method: 'PUT',
             mode: 'cors',
             body: JSON.stringify(taskDetails),
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-            }
+            // headers: {
+            //     'Access-Control-Allow-Origin': '*',
+            // }
         }
-
-        // TODO: check cors settings ... everywhere
 
         const res = await fetch(`https://xhjn5xxmn5.execute-api.eu-central-1.amazonaws.com/dev/tasks/${params.id}`, settings);
         const resString = await res.json();

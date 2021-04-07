@@ -65,6 +65,9 @@ module.exports.update = (event, context, callback) => {
 
     const response = {
       statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      },
       body: JSON.stringify(result.Attributes),
     };
     callback(null, response);
