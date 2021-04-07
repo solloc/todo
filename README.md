@@ -3,6 +3,14 @@ classical todo app to evaluate the serverless framework and related services (au
 
 Example: https://github.com/serverless/examples/tree/master/aws-node-rest-api-with-dynamodb
 
+## deploy serverless package
+
+`serverless deploy --stage dev`
+
+... or else this error is raised:
+
+> An error occurred: CustomApiGatewayAccountCloudWatchRole - Modifying service token is not allowed..
+
 # execute locally
 
 `npm install --global http-server`

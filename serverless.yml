@@ -67,6 +67,7 @@ provider:
 
 # you can add packaging information here
 package:
+  # individually: true
 #  include:
 #    - include-me.js
 #    - include-me-dir/**
@@ -75,6 +76,8 @@ package:
 #    - exclude-me-dir/**
     - "*.xmind"
     - client/**
+    - public/**
+    - src/**
 
 functions:
   tasks-create:
@@ -169,8 +172,13 @@ resources:
 
 plugins:
   - serverless-finch
+  - serverless-webpack
 
 custom:
   client:
     bucketName: todo-client-n34gc9t82xg2
     distributionFolder: public
+  webpack:
+    includeModules: true
+      # forceExclude:
+      #   - aws-sdk
