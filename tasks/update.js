@@ -18,10 +18,10 @@ module.exports.update = (event, context, callback) => {
   }
   
   console.log("data.text: " + typeof data['text']);
-  console.log("data.status: " + typeof data['status']);
+  // console.log("data.status: " + typeof data['status']);
 
   // validation
-  if (typeof data['text'] !== 'string' || typeof data['status'] !== 'string') {
+  if (typeof data['text'] !== 'string') {
     console.error('Validation failed');
     callback(null, {
       statusCode: 400,
@@ -37,7 +37,7 @@ module.exports.update = (event, context, callback) => {
     TableName: process.env.DYNAMODB_TABLE,
     Key: {
       taskID: event.pathParameters.id,
-      status: "OPEN",
+      // status: "OPEN",
     },
     ExpressionAttributeNames: {
       '#task_text': 'text',

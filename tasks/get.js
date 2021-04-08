@@ -10,7 +10,7 @@ module.exports.get = (event, context, callback) => {
     TableName: process.env.DYNAMODB_TABLE,
     Key: {
       taskID: event.pathParameters.id,
-      status: "OPEN"
+      // status: "OPEN"
     },
   };
 
