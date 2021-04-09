@@ -63,7 +63,7 @@
     {:then} 
         <form on:submit|preventDefault={saveData}>
             <textarea bind:value={taskDetails.text} class="w-full"></textarea>
-            <p><i>{taskDetails.text}</i></p>
+            <!-- <p><i>{taskDetails.text}</i></p> -->
             <p>STATUS: {taskDetails.status}</p>
             <p>Created at: {taskDetails.createdAt}</p>
             <p>Modified at: {taskDetails.modifiedAt}</p>
