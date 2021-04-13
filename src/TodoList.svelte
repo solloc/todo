@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
     import Icon from 'svelte-awesome';
     import { externalLink } from 'svelte-awesome/icons';
+	import TodoItemCreate from "./TodoItemCreate.svelte";
 
     // TODO: temporary. Params not in use for this component
     export let params;
@@ -39,6 +40,8 @@
 <!-- <button on:click={handleClick}>
     fetch todos
 </button> -->
+<!-- <TodoItemCreate/> -->
+<TodoItemCreate/>
 
 {#await promise}
 <p>waiting ...</p>
