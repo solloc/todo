@@ -59,6 +59,7 @@ provider:
             - "dynamodb:Scan"
             - "dynamodb:GetItem"
             - "dynamodb:UpdateItem"
+            - "dynamodb:DeleteItem"
           Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
 
 # you can define service wide environment variables here
@@ -108,6 +109,14 @@ functions:
           path: /tasks/{id}
           method: put
           cors: true
+  tasks-delete:
+    handler: tasks/delete.delete
+    events:
+      - http:
+          path: /tasks/{id}
+          method: delete
+          cors: true
+
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
