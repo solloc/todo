@@ -53,6 +53,30 @@
             throw new Error(resString);
         }
     }
+
+    async function deleteItem() {
+        console.log(`deleting item`);
+
+        const settings = {
+            method: 'DELETE',
+            mode: 'cors',
+            // body: JSON.stringify(taskDetails),
+            // headers: {
+            //     'Access-Control-Allow-Origin': '*',
+            // }
+        }
+
+        const res = await fetch(`https://xhjn5xxmn5.execute-api.eu-central-1.amazonaws.com/dev/tasks/${params.id}`, settings);
+        const resString = await res.json();
+        // taskDetails = await res.json();
+
+        if (res.ok) {
+            // return taskDetails;
+            return resString;
+        } else {
+            throw new Error(resString);
+        }
+    }
 </script>
 
 
@@ -68,6 +92,7 @@
             <p>Created at: {taskDetails.createdAt}</p>
             <p>Modified at: {taskDetails.modifiedAt}</p>
             <button type="submit">save</button>
+            <button on:click|preventDefault={deleteItem} class="bg-red-600 hover:bg-red-700">delete</button>
         </form>
     {/await}
 </div>
