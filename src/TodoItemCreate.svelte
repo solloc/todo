@@ -3,6 +3,7 @@
     import { onMount } from 'svelte';
     // import Icon from 'svelte-awesome';
     // import { externalLink } from 'svelte-awesome/icons';
+    import { createEventDispatcher } from 'svelte';
 
     // // import external-link-alt
     let taskDetails = {};
@@ -30,6 +31,9 @@
     //     // promise = getTodos();
     //     promise = getTodos();
     // }
+
+    const dispatch = createEventDispatcher();
+
     async function saveData() {
         console.log(`saving ${JSON.stringify(taskDetails)}`);
 
@@ -45,6 +49,7 @@
         const res = await fetch(`https://xhjn5xxmn5.execute-api.eu-central-1.amazonaws.com/dev/tasks`, settings);
         const resString = await res.json();
         // taskDetails = await res.json();
+        dispatch('taskCreated');
 
         if (res.ok) {
             // return taskDetails;

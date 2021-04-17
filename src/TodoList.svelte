@@ -29,6 +29,11 @@
         promise = getTodos();
     });
 
+    function onTaskCreated() {
+        console.log(`task was created`);
+        promise = getTodos();
+    }
+
     // function handleClick() {
     //     // promise = getTodos();
     //     promise = getTodos();
@@ -41,7 +46,7 @@
     fetch todos
 </button> -->
 <!-- <TodoItemCreate/> -->
-<TodoItemCreate/>
+<TodoItemCreate on:taskCreated={onTaskCreated} />
 
 {#await promise}
 <p>waiting ...</p>
