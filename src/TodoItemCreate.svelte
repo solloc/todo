@@ -61,18 +61,18 @@
 </script>
 
 
-<div class="shadow-md border p-1 m-1">
+<div class="card card-body">
     <!-- <b>ID:</b> {params.id} -->
     <!-- {#await promise} -->
         <!-- <p class="text-blue-500 text-center">loading task details</p> -->
     <!-- {:then}  -->
-        <form on:submit|preventDefault={saveData}>
-            <textarea bind:value={taskDetails.text} class="w-full"></textarea>
+        <form class="" on:submit|preventDefault={saveData}>
+            <textarea bind:value={taskDetails.text} class="form-control mb-3"></textarea>
             <!-- <p><i>{taskDetails.text}</i></p> -->
             <!-- <p>STATUS: {taskDetails.status}</p>
             <p>Created at: {taskDetails.createdAt}</p>
             <p>Modified at: {taskDetails.modifiedAt}</p> -->
-            <button type="submit">save</button>
+            <button type="submit" class="btn btn-primary">save</button>
         </form>
     <!-- {/await} -->
 </div>

@@ -46,24 +46,23 @@
     fetch todos
 </button> -->
 <!-- <TodoItemCreate/> -->
+<!-- <div class="row row-cols-1"> -->
+    <div class="d-grid gap-3">
 <TodoItemCreate on:taskCreated={onTaskCreated} />
 
 {#await promise}
 <p>waiting ...</p>
 {:then tasks}
-<div>
     {#each tasks as task}
-        <div class="container">
+        <div class="card">
             <!-- <div class="p-1">
                 <a href="#action=detail&taskid={task.taskID}" class="font-bold">{task.taskID}</a>
             </div>         -->
             
-            <div class="float-right">
-                <a href="/task/{task.taskID}">
+            <div class="card-body">
+                <a class="float-end" href="/task/{task.taskID}">
                     <Icon data={externalLink} />
                 </a>
-            </div>
-            <div class="">
                 {task.text}
             </div>
 
@@ -72,8 +71,8 @@
         </div>
     {/each}
     <!-- done -->
-</div>
 {/await}
+</div>
 
 <style>
     /* .task-container {

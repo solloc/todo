@@ -80,19 +80,19 @@
 </script>
 
 
-<div class="shadow-md border p-1 m-1">
+<div class="card card-body">
     <b>ID:</b> {params.id}
     {#await promise}
         <p class="text-blue-500 text-center">loading task details</p>
     {:then} 
         <form on:submit|preventDefault={saveData}>
-            <textarea bind:value={taskDetails.text} class="w-full"></textarea>
+            <textarea class="form-control" bind:value={taskDetails.text}></textarea>
             <!-- <p><i>{taskDetails.text}</i></p> -->
             <p>STATUS: {taskDetails.status}</p>
             <p>Created at: {taskDetails.createdAt}</p>
             <p>Modified at: {taskDetails.modifiedAt}</p>
-            <button type="submit">save</button>
-            <button on:click|preventDefault={deleteItem} class="bg-red-600 hover:bg-red-700">delete</button>
+            <button type="submit" class="btn btn-primary">save</button>
+            <button on:click|preventDefault={deleteItem} class="btn btn-danger">delete</button>
         </form>
     {/await}
 </div>

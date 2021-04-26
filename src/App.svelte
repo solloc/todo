@@ -22,15 +22,20 @@
 	router.start();
 </script>
 
-<div class="">
-	<div class="bg-gray-500 w-full fixed top-0 shadow-md p-2">
-		<h1 class="text-center text-white"><a href="/" class="bg-gray-700 rounded-lg font-bold p-1">todo</a></h1>
-	</div>
-	<div class="max-w-2xl mx-auto overflow-y-auto mt-10">
+<main>
+	<nav class="navbar navbar-dark bg-dark mb-3">
+		<div class="container">
+			<a class="navbar-brand" href="/">todo</a>
+			<!-- <div class="bg-gray-500 w-full fixed top-0 shadow-md p-2">
+				<h1 class="text-center text-white"><a href="/" class="bg-gray-700 rounded-lg font-bold p-1">todo</a></h1>
+			</div> -->
+		</div>
+	</nav>
+	<div class="container mb-3">
 		<!-- <TodoList/> -->
 		<svelte:component this="{page}" params="{params}"/>
 	</div>	
-</div>
+</main>
 
 
 
