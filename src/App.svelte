@@ -3,7 +3,10 @@
 	import TodoItem from "./TodoItem.svelte";
 	import Tailwind from "./Tailwind.svelte";
 	import router from "page";
+	// import  from "bootstrap";
 	// export let name;
+
+	// const bootstrap = require('bootstrap');
 
 	let page;
 	let params;

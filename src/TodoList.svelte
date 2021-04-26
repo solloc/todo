@@ -53,7 +53,7 @@
 {:then tasks}
 <div>
     {#each tasks as task}
-        <div class="shadow-md border p-1 m-1">
+        <div class="container">
             <!-- <div class="p-1">
                 <a href="#action=detail&taskid={task.taskID}" class="font-bold">{task.taskID}</a>
             </div>         -->
